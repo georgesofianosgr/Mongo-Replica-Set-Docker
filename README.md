@@ -7,7 +7,7 @@ Current mongo version: ***4.0.0***
 
 #### To create mongo containers run
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 #### To initialize replicas run
