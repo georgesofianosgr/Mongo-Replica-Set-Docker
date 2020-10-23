@@ -1,0 +1,2 @@
+docker rm -f mongo-node-1 mongo-node-2 mongo-node-3
+docker volume rm mongo_mongo-1-volume mongo_mongo-2-volume mongo_mongo-3-volume

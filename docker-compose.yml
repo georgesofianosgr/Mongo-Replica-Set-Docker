@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  mongoNode1:
+    container_name: "mongo-node-1"
+    image: mongo:4.0
+    command: --port 27017 --replSet rs1 --bind_ip_all 
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-1-volume:/data/db
+      - ./rs-init.js:/rs-init.js:ro
+    networks:
+      - mongoRS
+    depends_on:
+      - mongoNode2
+      - mongoNode3
+  mongoNode2:
+    container_name: "mongo-node-2"
+    image: mongo:4.0
+    command: --port 27018 --replSet rs1 --bind_ip_all 
+    ports:
+      - "27018:27018"
+    volumes:
+      - mongo-2-volume:/data/db
+    networks:
+      - mongoRS
+  mongoNode3:
+    container_name: "mongo-node-3"
+    image: mongo:4.0
+    command: --port 27019 --replSet rs1 --bind_ip_all 
+    ports:
+      - "27019:27019"
+    volumes:
+      - mongo-3-volume:/data/db
+    networks:
+      - mongoRS
+volumes:
+  mongo-1-volume:
+    driver: local
+  mongo-2-volume:
+    driver: local
+  mongo-3-volume:
+    driver: local
+networks:
+  mongoRS:
+    driver: bridge
