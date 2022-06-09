@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mongoNode1:
     container_name: "mongo-node-1"
-    image: mongo:4.0
+    image: mongo:5.0.5
     command: --port 27017 --replSet rs1 --bind_ip_all 
     ports:
       - "27017:27017"
@@ -16,7 +16,7 @@ services:
       - mongoNode3
   mongoNode2:
     container_name: "mongo-node-2"
-    image: mongo:4.0
+    image: mongo:5.0.5
     command: --port 27018 --replSet rs1 --bind_ip_all 
     ports:
       - "27018:27018"
@@ -26,7 +26,7 @@ services:
       - mongoRS
   mongoNode3:
     container_name: "mongo-node-3"
-    image: mongo:4.0
+    image: mongo:5.0.5
     command: --port 27019 --replSet rs1 --bind_ip_all 
     ports:
       - "27019:27019"
